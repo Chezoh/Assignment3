@@ -10,9 +10,9 @@ public class Breakout extends JFrame{
 	
 	public Breakout() {
 		// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT)DONE 28/01
-		setSize(settings.WINDOW_WIDTH,settings.WINDOW_HEIGHT);
+		setSize(Settings.WINDOW_WIDTH,settings.WINDOW_HEIGHT);
 		// TODO: Set the title DONE 28/01
-		setTitle(settings.WINDOW_NAME);
+		setTitle(Settings.WINDOW_NAME);
 		// TODO: Set the background colour to white DONE 28/01
 		setBackgroundColour(Color.WHITE);
 		// TODO: Set resizable to false DONE 28/01

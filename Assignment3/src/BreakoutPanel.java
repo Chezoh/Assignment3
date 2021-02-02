@@ -29,11 +29,14 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		Timer timer = new Timer(5, this);
 		timer.start();
 		
-		// TODO: Create a new ball object and assign it to the appropriate variable
-		Ball ball = new ball
-		// TODO: Create a new paddle object and assign it to the appropriate variable
-		// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS)
-		// TODO: Call the createBricks() method
+		// TODO: Create a new ball object and assign it to the appropriate variable  **DONE 31/01/21
+		ball = new Ball();
+		// TODO: Create a new paddle object and assign it to the appropriate variable  ** DONE 02/02/21
+		paddle = new Paddle();
+		// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS)  ** DONE 02/02/21
+		Brick [] bricks = new Brick [Settings.TOTAL_BRICKS];
+		// TODO: Call the createBricks() method ** DONE 02/02/21
+		createBricks(); 
 	}
 	
 	private void createBricks() {
@@ -52,7 +55,9 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	}
 	
 	private void paintBricks(Graphics g) {
-		// TODO: Loop through the bricks and call the paint() method
+		// TODO: Loop through the bricks and call the paint() method  ** DONE 02/02/21
+		for(int i =0; i < bricks.Length; i++)
+			paint();
 	}
 	
 	private void update() {
