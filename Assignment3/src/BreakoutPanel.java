@@ -15,6 +15,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	static final long serialVersionUID = 2L;
 
 	private boolean gameRunning = true;
+	private boolean gameOver = false; //** added 03/02/21
 	private int livesLeft = 3;
 	private String screenMessage = "";
 	private Ball ball;
@@ -34,7 +35,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		// TODO: Create a new paddle object and assign it to the appropriate variable  ** DONE 02/02/21
 		paddle = new Paddle();
 		// TODO: Create a new bricks array (Use Settings.TOTAL_BRICKS)  ** DONE 02/02/21
-		Brick [] bricks = new Brick [Settings.TOTAL_BRICKS];
+		bricks = new Brick [Settings.TOTAL_BRICKS];
 		// TODO: Call the createBricks() method ** DONE 02/02/21
 		createBricks(); 
 	}
@@ -56,25 +57,34 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	
 	private void paintBricks(Graphics g) {
 		// TODO: Loop through the bricks and call the paint() method  ** DONE 02/02/21
-		for(int i =0; i < bricks.Length; i++)
-			paint();
+		int counter = 0;
+		for(int x =0; x < 4; x++) {
+			for(int y = 0; y < 5;  y++) {
+				bricks[counter].paint(g);
+				counter++;
+			}
+		}
 	}
-	
+			
 	private void update() {
 		if(gameRunning) {
-			// TODO: Update the ball and paddle
+			// TODO: Update the ball and paddle  ** DONE 03/02/21 
+			ball.update();
+			paddle.update();
 			collisions();
 			repaint();
 		}
 	}
 	
 	private void gameOver() {
-		// TODO: Set screen message
+		// TODO: Set screen message  **Done 03/02/21
+		screenMessage ="Sorry, GAME OVER!";
 		stopGame();
 	}
 	
 	private void gameWon() {
-		// TODO: Set screen message
+		// TODO: Set screen message  **DONE 03/02/21
+		screenMessage ="Congratulations! You WON!";
 		stopGame();
 	}
 	
@@ -157,7 +167,9 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         paintBricks(g);
         
         // Draw lives left
-        // TODO: Draw lives left in the top left hand corner
+        // TODO: Draw lives left in the top left hand corner ** DONE 06/02/21
+       
+        g.drawString(String.valueOf(livesLeft),Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);
         
         // Draw screen message
         if(screenMessage != null) {
@@ -166,15 +178,22 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         	g.drawString(screenMessage, (Settings.WINDOW_WIDTH / 2) - (messageWidth / 2), Settings.MESSAGE_POSITION);
         }
     }
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right
+		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right  **DONE 06/02/21
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			paddle.setXVelocity(-1);
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			paddle.setXVelocity(1);
+		}
 	}
-
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO: Set the velocity of the paddle after the player has released the keys
+		// TODO: Set the velocity of the paddle after the player has released the keys **DONE 06/02/21
+		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+			paddle.setXVelocity(0);
+		}
 	}
 
 	@Override
