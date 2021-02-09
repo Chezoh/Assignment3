@@ -11,7 +11,6 @@ public class Breakout extends JFrame{
 	public Breakout() {
 		// TODO: Set the size of the screen (use Settings.WINDOW_WIDTH/HEIGHT)DONE 28/01
 		setSize(Settings.WINDOW_WIDTH,Settings.WINDOW_HEIGHT);
-		//setUndecorated(true);
 		// TODO: Set the title DONE 28/01
 		setTitle(Settings.WINDOW_NAME);
 		// TODO: Set the background colour to white DONE 28/01
@@ -25,9 +24,7 @@ public class Breakout extends JFrame{
         add(panel);
         setVisible(true);
 	}
-
 	public static void main(String[] args) {
 		new Breakout();	
 	}
-
 }

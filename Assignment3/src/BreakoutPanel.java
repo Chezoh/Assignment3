@@ -30,7 +30,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		Timer timer = new Timer(5, this);
 		timer.start();
 		
-		// TODO: Create a new ball object and assign it to the appropriate variable  **DONE 31/01/21
+		// TODO: Create a new ball object and assign it to the appropriate variable  **DONE 02/02/21
 		ball = new Ball();
 		// TODO: Create a new paddle object and assign it to the appropriate variable  ** DONE 02/02/21
 		paddle = new Paddle();
@@ -40,7 +40,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		createBricks(); 
 		
 	}
-	
 	private void createBricks() {
 		int counter = 0;
 		int x_space = 0;
@@ -55,7 +54,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			y_space = 0;
 		}
 	}
-	
 	private void paintBricks(Graphics g) {
 		// TODO: Loop through the bricks and call the paint() method  ** DONE 02/02/21
 		int counter = 0;
@@ -66,7 +64,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			}
 		}
 	}
-			
 	private void update() {
 		if(gameRunning) {
 			// TODO: Update the ball and paddle  ** DONE 03/02/21 
@@ -76,23 +73,19 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			repaint();
 		}
 	}
-	
 	private void gameOver() {
 		// TODO: Set screen message  **Done 03/02/21
 		screenMessage ="Sorry, GAME OVER!";
 		stopGame();
 	}
-	
 	private void gameWon() {
 		// TODO: Set screen message  **DONE 03/02/21
 		screenMessage ="Congratulations! You WON!";
 		stopGame();
 	}
-	
 	private void stopGame() {
 		gameRunning = false;
 	}
-	
 	private void collisions() {
 		// Check for loss
 		if(ball.y > 450) {
@@ -106,7 +99,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 				ball.setYVelocity(-1);
 			}
 		}
-		
 		// Check for win
 		boolean bricksLeft = false;
 		for(int i = 0; i < bricks.length; i++) {
@@ -121,14 +113,12 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 			gameWon();
 			return;
 		}
-		
 		// Check collisions
 		if(ball.getRectangle().intersects(paddle.getRectangle())) {
 			// Simplified touching of paddle
 			// Proper game would change angle of ball depending on where it hit the paddle
 			ball.setYVelocity(-1);
 		}
-		
 		for(int i = 0; i < bricks.length; i++) {
 			if (ball.getRectangle().intersects(bricks[i].getRectangle())) {
 				int ballLeft = (int) ball.getRectangle().getMinX();
@@ -169,7 +159,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         
         // Draw lives left
         // TODO: Draw lives left in the top left hand corner ** DONE 06/02/21
-       
         g.drawString(String.valueOf(livesLeft),Settings.LIVES_POSITION_X, Settings.LIVES_POSITION_Y);
         
         // Draw screen message
@@ -179,7 +168,6 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
         	g.drawString(screenMessage, (Settings.WINDOW_WIDTH / 2) - (messageWidth / 2), Settings.MESSAGE_POSITION);
         }
     }
-	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO: Set the velocity of the paddle depending on whether the player is pressing left or right  **DONE 06/02/21
@@ -193,7 +181,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	public void keyReleased(KeyEvent e) {
 		// TODO: Set the velocity of the paddle after the player has released the keys **DONE 06/02/21
 		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			paddle.setXVelocity(0);
+			paddle.setXVelocity(0);  // paddle won't move unless there is a key press.
 		}
 	}
 	@Override
@@ -204,5 +192,4 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	public void actionPerformed(ActionEvent arg0) {
 		update();
 	}
-
 }

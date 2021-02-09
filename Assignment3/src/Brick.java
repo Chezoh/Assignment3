@@ -13,7 +13,6 @@ public class Brick extends Sprite {
 		setWidth(Settings.BRICK_WIDTH);
 		setHeight(Settings.BRICK_HEIGHT);
 	}
-
 	public boolean isBroken() {
 		return broken;	// TODO: Return the correct variable
 	}
@@ -21,7 +20,6 @@ public class Brick extends Sprite {
 		// TODO: Set the broken variable using the parameter given
 		broken = b;
 	}
-	
 	public void paint(Graphics g) {
 		if(!broken) {
 			g.fillRect(x, y, Settings.BRICK_WIDTH, Settings.BRICK_HEIGHT);

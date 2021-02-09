@@ -21,7 +21,6 @@ public class Sprite {
 		// TODO
 		this.height = height;
 	}
-	
 	// Note: Change the "0" to the correct variable
 	public int getX() { 
 		return x;	// TODO: Return correct value ** DONE 04/02/21
