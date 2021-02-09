@@ -18,9 +18,9 @@ public class Ball extends Sprite {
 	 * Uses Settings.INITIAL_BALL_X/Y to set the position of the ball
 	 */
 	public void resetPosition() {
-		x = setX(Settings.INITIAL_BALL_X);
+		x = Settings.INITIAL_BALL_X;
 		// TODO: Set the balls y by using the INITIAL_BALL_Y (see above) ** DONE 28/01
-		y = setY(Settings.INITIAL_BALL_Y);
+		y = Settings.INITIAL_BALL_Y;
 	}
 	
 	public void update() {
@@ -31,7 +31,7 @@ public class Ball extends Sprite {
 		// Bounce off left side of screen
 		if(x <= 0) {
 			// TODO: Set x to 0 so it does not leave the screen **DONE 28/01
-			setX(0);
+			x = 0;
 			// TODO: Change the x velocity to make the ball go right **DONE 28/01
 			setXVelocity(1);
 		}
@@ -42,25 +42,24 @@ public class Ball extends Sprite {
 			setX(Settings.WINDOW_WIDTH - Settings.BALL_WIDTH);
 			// TODO: Change the x velocity to make the ball go left ** DONE 02/02/21
 			setXVelocity(-1);
-			
 		}
 		
 		// Bounce off top of screen
 		if(y <= 0) {
 			// TODO: Set y to 0 so it does not leave the screen **DONE 28/01
-			setY(0);
+			y = 0;
 			// TODO: Change the y velocity to make the ball go downward **DONE 28/01
-			setYVelocity(-1);
+			setYVelocity(1);
 		}
 	}
 	
 	public void setXVelocity(int x) {
 		// TODO: Set the x velocity  **DONE 31/01/21
-		x = xVelocity;
+		xVelocity = x;
 	}
 	public void setYVelocity(int y) {
 		// TODO: Set the y velocity ** Done 31/01/21
-		y = yVelocity;
+		yVelocity = y;
 	}
 	
 	public int getXVelocity() {

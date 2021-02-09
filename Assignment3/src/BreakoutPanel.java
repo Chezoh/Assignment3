@@ -38,6 +38,7 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 		bricks = new Brick [Settings.TOTAL_BRICKS];
 		// TODO: Call the createBricks() method ** DONE 02/02/21
 		createBricks(); 
+		
 	}
 	
 	private void createBricks() {
@@ -191,14 +192,12 @@ public class BreakoutPanel extends JPanel implements ActionListener, KeyListener
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO: Set the velocity of the paddle after the player has released the keys **DONE 06/02/21
-		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+		if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			paddle.setXVelocity(0);
 		}
 	}
-
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		
 	}
 
 	@Override

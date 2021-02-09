@@ -15,10 +15,10 @@ public class Paddle extends Sprite {
 	
 	public void resetPosition() {
 		// TODO: Set initial position x and y (use INITIAL_PADDLE_X/Y)  **DONE 31/01/21
-		setX(Settings.INITIAL_PADDLE_X);
-		setY(Settings.INITIAL_PADDLE_Y);
+		x = Settings.INITIAL_PADDLE_X;
+		y = Settings.INITIAL_PADDLE_Y;
 		// Note: Check Ball.java for a hint
-	}
+		}
 	
 	public void update() {
 		x += xVelocity;
@@ -28,9 +28,9 @@ public class Paddle extends Sprite {
 		if(x <=0) {
 			setX(0);
 		}
-		
-	 if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH);
+		if(x >= Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH) {
 	 	setX(Settings.WINDOW_WIDTH - Settings.PADDLE_WIDTH);
+	 	}
 	}
 	
 	public void paint(Graphics g) {
@@ -39,6 +39,6 @@ public class Paddle extends Sprite {
 	
 	public void setXVelocity(int vel) {
 		// TODO: Set x velocity
-		xVelocity = 1;
+		xVelocity = vel;
 	}
 }
